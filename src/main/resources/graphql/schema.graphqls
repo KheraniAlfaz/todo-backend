@@ -1,0 +1,39 @@
+scalar Date
+
+type Task {
+    id: ID!
+    title: String
+    description: String
+    deadline: Date
+    completed: Boolean
+}
+
+type TaskPage {
+    tasks: [Task!]!
+    totalTasks: Int!
+    totalPages: Int
+    currentPage: Int
+}
+
+type Query {
+    getTaskById(id: ID!): Task
+    getTasks: TaskPage
+}
+
+type Mutation {
+    createTask(
+        title: String!
+        description: String
+        deadline: Date
+        completed: Boolean!
+    ) : Task!
+    updateTask(
+        id: ID!
+        title: String!
+        description: String
+        completed: Boolean!
+    ) : Task!
+    deleteTask(
+        id: ID!
+    ) : String
+}
